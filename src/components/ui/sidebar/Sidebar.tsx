@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import clsx from "clsx";
+import { useUIStore } from "@/store";
 import {
   Search,
   X,
@@ -12,19 +14,35 @@ import {
 } from "lucide-react";
 
 export function Sidebar() {
+  const isSidebarOpen = useUIStore((state) => state.isSidebarOpen);
+  const closeMenu = useUIStore((state) => state.closeSidebar);
+
   return (
     <div className="">
       {/* background black */}
-      <div className="fixed top-0 left-0 w-screen h-screen z-10 bg-black opacity-30"></div>
+      {isSidebarOpen && (
+        <div className="fixed top-0 left-0 w-screen h-screen z-10 bg-black opacity-30"></div>
+      )}
       {/* bacground blur */}
-      <div className="fade-in fixed top-0 left-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm"></div>
+      {isSidebarOpen && (
+        <div
+          className="fade-in fixed top-0 left-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm"
+          onClick={closeMenu}
+        ></div>
+      )}
 
       {/* sidemenu */}
-      <nav className="fixed p-5 right-0 top-0 w-[400px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300">
-        <X
-          className="absolute top-5 right-5 cursor-pointer"
-          onClick={() => console.log("click")}
-        />
+      <nav
+        className={clsx(
+          "fixed p-5 right-0 top-0 w-[400px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300",
+          {
+            "translate-x-full": !isSidebarOpen,
+          }
+        )}
+      >
+        <button onClick={closeMenu}>
+          <X className="absolute top-5 right-5 cursor-pointer" />
+        </button>
 
         <form className="relative mt-14">
           <Search size={20} className="absolute top-2 left-2" />
