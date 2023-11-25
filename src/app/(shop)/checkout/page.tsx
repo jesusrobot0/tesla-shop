@@ -33,7 +33,7 @@ export default function CheckoutPage() {
                   height={100}
                   className="mr-5 rounded w-[100px] h-[100px]"
                 />
-                <div className="">
+                <div>
                   <p className="font-semibold">{product.title}</p>
                   <p>${product.price} x 3</p>
                   <p>
@@ -73,11 +73,11 @@ export default function CheckoutPage() {
             <div className="mt-5 mb-2 w-full">
               <p className="mb-5">
                 <span className="text-xs">
-                  Al hacer click en "Colocar orden" aceptas nuestros{" "}
+                  Al hacer click en "Colocar orden" aceptas nuestros
                   <Link href="#" className="underline">
                     Términos y condiciones
-                  </Link>{" "}
-                  y{" "}
+                  </Link>
+                  y
                   <Link href="#" className="underline">
                     Política de privacidad
                   </Link>
