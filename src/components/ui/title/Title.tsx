@@ -9,7 +9,7 @@ export function Title({ title, subtitle, className }: Props) {
   return (
     <div className={`mt-10 ${className}`}>
       <h1
-        className={`${titleFont.className} antialiased text-3xl font-semibold my-7`}
+        className={`${titleFont.className} antialiased text-3xl font-semibold my-7 capitalize`}
       >
         {title}
       </h1>
