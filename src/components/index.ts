@@ -15,3 +15,4 @@ export { ProductGridItem } from "./products/product-grid/ProductGridItem";
 export { SizeSelector } from "./product/size-selector/SizeSelector";
 export { QuantitySelector } from "./product/quantity-selector/QuantitySelector";
 export { Slideshow } from "./product/slideshow/Slideshow";
+export { MobileSlideshow } from "./product/slideshow/MobileSlideshow";
