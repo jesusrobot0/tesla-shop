@@ -8,7 +8,8 @@ Para correr en desarrollo
 2. Crear una copia del `.env.template` y renombrarlo a `.env` y cambiar las variables de entorno
 3. Instalar las dependencias del proyecto `pnpm install`
 4. Levantar la base de datos `docker compose up -d`
-5. Ejecutar el proyecto en desarrollo `pnpm dev`
+5. Ejecutar las migraciones de Prisma `pnpm dlx prisma migrate dev`
+6. Ejecutar el proyecto en desarrollo `pnpm dev`
 
 Para correr en producción
 
