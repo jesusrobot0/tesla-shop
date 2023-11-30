@@ -10,7 +10,8 @@ Para correr en desarrollo
 4. Levantar la base de datos `docker compose up -d`
 5. Ejecutar las migraciones de Prisma `pnpm dlx prisma migrate dev`
 6. Ejecutar seed `npm run seed`
-7. Ejecutar el proyecto en desarrollo `pnpm dev`
+7. Puedes observar la data de la base de datos directamente desde prisma ejecutando `pnpm dlx prisma studio`
+8. Ejecutar el proyecto en desarrollo `pnpm dev`
 
 Para correr en producción
 
