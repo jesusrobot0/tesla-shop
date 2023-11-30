@@ -9,7 +9,8 @@ Para correr en desarrollo
 3. Instalar las dependencias del proyecto `pnpm install`
 4. Levantar la base de datos `docker compose up -d`
 5. Ejecutar las migraciones de Prisma `pnpm dlx prisma migrate dev`
-6. Ejecutar el proyecto en desarrollo `pnpm dev`
+6. Ejecutar seed `npm run seed`
+7. Ejecutar el proyecto en desarrollo `pnpm dev`
 
 Para correr en producción
 

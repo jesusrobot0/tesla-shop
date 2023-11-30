@@ -5,6 +5,7 @@ interface Props {
   subtitle?: string;
   className?: string;
 }
+
 export function Title({ title, subtitle, className }: Props) {
   return (
     <div className={`mt-10 ${className}`}>

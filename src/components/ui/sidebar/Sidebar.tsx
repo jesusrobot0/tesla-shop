@@ -18,7 +18,7 @@ export function Sidebar() {
   const closeMenu = useUIStore((state) => state.closeSidebar);
 
   return (
-    <div className="">
+    <div>
       {/* background black */}
       {isSidebarOpen && (
         <div className="fixed top-0 left-0 w-screen h-screen z-10 bg-black opacity-30"></div>
