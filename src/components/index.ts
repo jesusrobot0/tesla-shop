@@ -5,6 +5,7 @@ export { PageNotFound } from "./ui/not-found/PageNotFound";
 export { Title } from "./ui/title/Title";
 export { Sidebar } from "./ui/sidebar/Sidebar";
 export { Footer } from "./ui/footer/Footer";
+export { Pagination } from "./ui/pagination/Pagination";
 
 // products
 
