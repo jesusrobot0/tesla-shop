@@ -11,7 +11,9 @@ export function TopMenu() {
       {/* Logo */}
       <div>
         <Link href="/">
-          <span className={`${titleFont.className} antialiased font-bold`}>
+          <span
+            className={`${titleFont.className} antialiased text-2xl font-bold`}
+          >
             Tesla
           </span>
           <span> | Shop</span>
@@ -38,7 +40,6 @@ export function TopMenu() {
           Niños
         </Link>
       </div>
-
       {/* Search, Cart, Menu */}
       <div className="flex items-center gap-3">
         <Link href="/search">
