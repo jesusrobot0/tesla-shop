@@ -1,1 +1,1 @@
-export { getPaginatedProductsWithImages } from "./products/product.pagination";
+export { getPaginatedProductsWithImages } from "./products/product-pagination";
