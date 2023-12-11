@@ -7,7 +7,7 @@
     "build": "pnpm run prisma:deploy && next build",
     "start": "next start",
     "lint": "next lint",
-    "prisma:deploy": "pnpm dlx prisma migrate deploy && prisma genetate",
+    "prisma:deploy": "pnpm dlx prisma migrate deploy && prisma generate",
     "seed": "ts-node src/seed/seed-database.ts"
   },
   "dependencies": {
