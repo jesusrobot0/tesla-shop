@@ -14,19 +14,15 @@ export async function getPaginatedProductsWithImages({
   take = 12,
   gender,
 }: PaginationOptions) {
-  // 1. Validar que page sea un numero mayor a 1
-  if (isNaN(Number(page))) page = 1;
-  if (page < 1) page = 1;
-
-  // 2. Validar que take sea un numero mayor a 1
-  if (isNaN(Number(take))) take = 1;
-  if (take < 1) take = 1;
+  // Si page o take no son un numero o son un numero menor a 1 retornalos con 1
+  if (isNaN(Number(page)) || Number(page) < 1) page = 1;
+  if (isNaN(Number(take)) || Number(take) < 1) take = 1;
 
   try {
-    // 3. Obtener los productos de la BD
+    // Obtener los productos de la BD en funcion del genero especificado
     const products = await prisma.product.findMany({
       take: take,
-      skip: (page - 1) * take, // 1 - 1 = 0, 0 * 12 = 0; 2 - 1 = 1, 1 * 12 = 12;
+      skip: (page - 1) * take, // 1 - 1 = 0; 0 * 12 = 0; 2 - 1 = 1, 1 * 12 = 12;
       include: {
         ProductImage: {
           take: 2,
@@ -40,7 +36,7 @@ export async function getPaginatedProductsWithImages({
       },
     });
 
-    // 4. Obtener el total de páginas
+    // Obtener el total de páginas
     const productsCount = await prisma.product.count({ where: { gender } });
     const totalPages = Math.ceil(productsCount / take);
 
@@ -48,7 +44,7 @@ export async function getPaginatedProductsWithImages({
       currentPage: page,
       totalPages,
       products: products.map((product) => {
-        // 5. Limpieza de los datos que enviamos al frontend
+        // Limpieza de los datos que enviamos al frontend
         const { ProductImage, ...productCleaned } = product;
         return {
           ...productCleaned,
