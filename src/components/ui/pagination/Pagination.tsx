@@ -1,19 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { redirect, usePathname, useSearchParams } from "next/navigation";
 import clsx from "clsx";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { redirect, usePathname, useSearchParams } from "next/navigation";
 import { generatePaginationNumbers } from "@/utils";
 
 interface Props {
   totalPages: number;
 }
+
 export function Pagination({ totalPages }: Props) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // Obtiene la página actual
+  // Obten la página actual
   const page = searchParams.get("page") ? Number(searchParams.get("page")) : 1;
   const currentPage = isNaN(page) ? 1 : page;
 

@@ -4,7 +4,8 @@ import prisma from "@/lib/prisma";
 
 export async function getProductBySlug(slug: string) {
   try {
-    const product = prisma.product.findFirst({
+    // Obtener el producto por slug
+    const product = await prisma.product.findFirst({
       include: {
         ProductImage: {
           select: {
@@ -19,9 +20,12 @@ export async function getProductBySlug(slug: string) {
 
     if (!product) return null;
 
+    // Limpieza de los datos que enviamos al frontend
     const { ProductImage, ...productCleaned } = product;
-
-    return { product };
+    return {
+      ...productCleaned,
+      images: ProductImage.map((image) => image.url),
+    };
   } catch (error) {
     console.log(error);
     throw new Error("Error al obtener producto por slug");

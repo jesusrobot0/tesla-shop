@@ -26,7 +26,7 @@ export function ProductGridItem({ product }: Props) {
         />
       </Link>
       <div className="p-4 flex flex-col">
-        <Link href={`/product/${product.slug}`} className="hover:text-red-600">
+        <Link href={`/product/${product.slug}`} className="hover:text-sky-600">
           {product.title}
         </Link>
         <span className="font-bold">${product.price}</span>
