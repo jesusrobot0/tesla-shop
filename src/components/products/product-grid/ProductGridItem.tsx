@@ -7,9 +7,10 @@ import { Product } from "@/interfaces";
 
 interface Props {
   product: Product;
+  priority: boolean;
 }
 
-export function ProductGridItem({ product }: Props) {
+export function ProductGridItem({ product, priority }: Props) {
   const initialImage = product.images[0];
   const [displayImage, setDisplayImage] = useState(initialImage);
   return (
@@ -21,6 +22,7 @@ export function ProductGridItem({ product }: Props) {
           className="w-full object-cover"
           width={500}
           height={500}
+          priority={priority}
           onMouseEnter={() => setDisplayImage(product.images[1])}
           onMouseLeave={() => setDisplayImage(initialImage)}
         />
