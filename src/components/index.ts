@@ -18,3 +18,4 @@ export { SizeSelector } from "./product/size-selector/SizeSelector";
 export { QuantitySelector } from "./product/quantity-selector/QuantitySelector";
 export { Slideshow } from "./product/slideshow/Slideshow";
 export { MobileSlideshow } from "./product/slideshow/MobileSlideshow";
+export { StockLabel } from "./product/stock-label/StockLabel";

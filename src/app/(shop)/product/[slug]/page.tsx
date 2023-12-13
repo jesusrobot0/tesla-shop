@@ -1,20 +1,24 @@
+export const revalidate = 604800; // 7 Dias
+
+import { notFound } from "next/navigation";
+import { titleFont } from "@/config/fonts";
 import {
   MobileSlideshow,
   QuantitySelector,
   SizeSelector,
   Slideshow,
+  StockLabel,
 } from "@/components";
-import { titleFont } from "@/config/fonts";
-import { initialData } from "@/seed/seed";
-import { notFound } from "next/navigation";
+import { getProductBySlug } from "@/actions";
 
 interface Props {
   params: {
     slug: string;
   };
 }
-export default function ProductPage({ params: { slug } }: Props) {
-  const product = initialData.products.find((product) => product.slug === slug);
+
+export default async function ProductPage({ params: { slug } }: Props) {
+  const product = await getProductBySlug(slug);
 
   if (!product) notFound();
 
@@ -38,6 +42,7 @@ export default function ProductPage({ params: { slug } }: Props) {
 
       {/* detalles */}
       <div className="col-span-1 px-5 ">
+        <StockLabel slug={slug} />
         <h1 className={`${titleFont.className} antialiased font-bold text-xl `}>
           {product.title}
         </h1>
