@@ -1,7 +1,6 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import { sleep } from "@/utils";
 
 export async function getStockBySlug(slug: string) {
   try {
