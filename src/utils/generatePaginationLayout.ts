@@ -1,4 +1,4 @@
-export function generatePaginationNumbers(
+export function generatePaginationLayout(
   currentPage: number,
   totalPages: number
 ) {

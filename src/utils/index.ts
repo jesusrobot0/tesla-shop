@@ -1,1 +1,1 @@
-export { generatePaginationNumbers } from "./generatePaginationNumbers";
+export { generatePaginationLayout } from "./generatePaginationLayout";
