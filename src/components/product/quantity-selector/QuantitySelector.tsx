@@ -5,12 +5,12 @@ import { Minus, Plus } from "lucide-react";
 
 interface Props {
   quantity: number;
-  onQuantityChanged: (quantity: number) => void;
+  onQuantityChanged?: (quantity: number) => void;
 }
 export function QuantitySelector({ quantity, onQuantityChanged }: Props) {
   const onValueChanged = (value: number) => {
     if (quantity + value < 1) return;
-    onQuantityChanged(quantity + value);
+    onQuantityChanged?.(quantity + value);
   };
   return (
     <div className="flex">
