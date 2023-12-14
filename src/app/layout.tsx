@@ -7,8 +7,11 @@ interface Props {
 }
 
 export const metadata: Metadata = {
-  title: "Tesla | Shop",
-  description: "Una tienda virtual de productos",
+  title: {
+    template: "%s - Tesla | Shop",
+    default: "Home - Tesla | Shop",
+  },
+  description: "Una tienda virtual de productos de Tesla",
 };
 
 export default function RootLayout({ children }: Props) {

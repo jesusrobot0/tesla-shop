@@ -26,12 +26,12 @@ export function StockLabel({ slug }: Props) {
     <>
       {isLoading ? (
         <p
-          className={`${titleFont.className} antialiased font-bold animate-pulse bg-gray-200 w-[80px]`}
+          className={`${titleFont.className} antialiased font-bold animate-pulse bg-gray-200 w-[80px] rounded mb-1`}
         >
           &nbsp;
         </p>
       ) : (
-        <p className={`${titleFont.className} antialiased font-bold`}>
+        <p className={`${titleFont.className} antialiased font-bold mb-1`}>
           Stock: {stock}
         </p>
       )}

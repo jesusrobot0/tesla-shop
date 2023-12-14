@@ -1,9 +1,11 @@
 export const revalidate = 1800; // 1/2 hora
 
+import { Metadata, ResolvingMetadata } from "next";
+import { redirect } from "next/navigation";
+import { Gender } from "@prisma/client";
 import { getPaginatedProductsWithImages } from "@/actions";
 import { Pagination, ProductGrid, Title } from "@/components";
-import { Gender } from "@prisma/client";
-import { redirect } from "next/navigation";
+import { labels } from "@/utils";
 
 interface Props {
   params: {
@@ -11,6 +13,15 @@ interface Props {
   };
   searchParams: {
     page?: string;
+  };
+}
+
+export async function generateMetadata(
+  { params: { gender } }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  return {
+    title: `Ropa para ${labels[gender]}`,
   };
 }
 
@@ -27,14 +38,6 @@ export default async function CategoryPage({
   if (products.length === 0) {
     redirect(`/gender/${gender}`);
   }
-
-  // prettier-ignore
-  const labels : Record<Gender, string> = {
-    'men': "hombres",
-    'women': "mujeres",
-    'kid': "niños",
-    'unisex': 'todos'
-  };
 
   return (
     <>
