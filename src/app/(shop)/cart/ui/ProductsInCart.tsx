@@ -11,6 +11,7 @@ export default function ProductsInCart() {
   const updateProductQuantity = useCartStore(
     (store) => store.updateProductQuantity
   );
+  const removeProduct = useCartStore((store) => store.removeProduct);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function ProductsInCart() {
       {productsInCart.map((product) => (
         <div
           key={`cart-list-${product.slug}-${product.size}`}
-          className="flex mb-5"
+          className="flex mb-5 fade-out"
         >
           <Image
             src={`/products/${product.image}`}
@@ -47,7 +48,12 @@ export default function ProductsInCart() {
                   updateProductQuantity(product, quantity)
                 }
               />
-              <button className="underline text-gray-500">Remover</button>
+              <button
+                className="underline text-gray-500"
+                onClick={() => removeProduct(product)}
+              >
+                Remover
+              </button>
             </div>
           </div>
         </div>
