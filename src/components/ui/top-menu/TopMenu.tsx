@@ -1,11 +1,20 @@
 "use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { titleFont } from "@/config/fonts";
-import { useUIStore } from "@/store";
+import { useCartStore, useUIStore } from "@/store";
 import { Search, ShoppingCart } from "lucide-react";
 
 export function TopMenu() {
   const openMenu = useUIStore((state) => state.openSidebar);
+  const totalItemsInCart = useCartStore((state) => state.getTotalItems());
+
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
   return (
     <nav className="w-full px-5 flex justify-between items-center">
       {/* Logo */}
@@ -47,9 +56,11 @@ export function TopMenu() {
         </Link>
         <Link href="/cart">
           <div className="relative">
-            <span className="absolute -top-2 -right-2 px-1 text-xs font-bold text-white rounded-full bg-blue-700">
-              3
-            </span>
+            {loaded && totalItemsInCart > 0 && (
+              <span className="absolute -top-2 -right-2 px-1 text-xs font-bold text-white rounded-full bg-blue-700">
+                {totalItemsInCart}
+              </span>
+            )}
             <ShoppingCart className="w-5 h-5" />
           </div>
         </Link>

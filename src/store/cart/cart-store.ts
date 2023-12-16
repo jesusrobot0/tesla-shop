@@ -4,6 +4,7 @@ import type { CartProduct } from "@/interfaces";
 
 interface State {
   cart: CartProduct[];
+  getTotalItems: () => number;
   addProductToCart: (product: CartProduct) => void;
   // updateProductQuantity: () => void;
   // removeProduct: () => void;
@@ -13,6 +14,12 @@ export const useCartStore = create<State>()(
   persist(
     (set, get) => ({
       cart: [],
+
+      getTotalItems() {
+        const { cart } = get();
+        return cart.reduce((total, item) => total + item.quantity, 0);
+      },
+
       addProductToCart(product: CartProduct) {
         const { cart } = get();
 
