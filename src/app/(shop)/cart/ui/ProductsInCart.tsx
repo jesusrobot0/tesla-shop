@@ -8,6 +8,9 @@ import { QuantitySelector } from "@/components";
 
 export default function ProductsInCart() {
   const productsInCart = useCartStore((state) => state.cart);
+  const updateProductQuantity = useCartStore(
+    (store) => store.updateProductQuantity
+  );
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -38,7 +41,12 @@ export default function ProductsInCart() {
             </Link>
             <p>${product.price}</p>
             <div className="flex items-center gap-5">
-              <QuantitySelector quantity={product.quantity} />
+              <QuantitySelector
+                quantity={product.quantity}
+                onQuantityChanged={(quantity) =>
+                  updateProductQuantity(product, quantity)
+                }
+              />
               <button className="underline text-gray-500">Remover</button>
             </div>
           </div>
