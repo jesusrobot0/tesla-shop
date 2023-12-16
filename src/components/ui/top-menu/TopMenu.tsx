@@ -54,10 +54,10 @@ export function TopMenu() {
         <Link href="/search">
           <Search className="w-5 h-5" />
         </Link>
-        <Link href="/cart">
+        <Link href={totalItemsInCart === 0 && loaded ? "/empty" : "/cart"}>
           <div className="relative">
             {loaded && totalItemsInCart > 0 && (
-              <span className="absolute -top-2 -right-2 px-1 text-xs font-bold text-white rounded-full bg-blue-700">
+              <span className="fade-in absolute -top-2 -right-2 px-1 text-xs font-bold text-white rounded-full bg-blue-700">
                 {totalItemsInCart}
               </span>
             )}

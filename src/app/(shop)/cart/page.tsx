@@ -5,7 +5,6 @@ import ProductsInCart from "./ui/ProductsInCart";
 import OrderSummary from "./ui/OrderSummary";
 
 export default function CartPage() {
-  // redirect("/empty");
   return (
     <div className="flex justify-center items-center mb-72">
       <div className="flex flex-col w-[1000px]">
