@@ -2,24 +2,38 @@
 
 import { useState } from "react";
 import { QuantitySelector, SizeSelector } from "@/components";
-import { Product, Size } from "@/interfaces";
+import type { CartProduct, Product, Size } from "@/interfaces";
+import { useCartStore } from "@/store";
 
 interface Props {
   product: Product;
 }
 
 export function AddToCart({ product }: Props) {
+  const addProductToCart = useCartStore((state) => state.addProductToCart);
   const [size, setSize] = useState<Size | undefined>();
-  const [qunatity, setQunatity] = useState<number>(1);
+  const [quantity, setQuantity] = useState<number>(1);
   const [error, setError] = useState(false);
 
   const addToCart = () => {
     if (!size) {
       setError(true);
-      return null;
+      return;
     }
-    console.log({ size, qunatity });
+    const cartProduct: CartProduct = {
+      id: product.id,
+      slug: product.slug,
+      title: product.title,
+      price: product.price,
+      quantity,
+      size,
+      image: product.images[0],
+    };
+
+    addProductToCart(cartProduct);
     setError(false);
+    setQuantity(1);
+    setSize(undefined);
   };
   return (
     <>
@@ -35,7 +49,7 @@ export function AddToCart({ product }: Props) {
         onSizeChanged={setSize}
       />
       {/* todo: selector de cantidad */}
-      <QuantitySelector quantity={qunatity} onQuantityChanged={setQunatity} />
+      <QuantitySelector quantity={quantity} onQuantityChanged={setQuantity} />
 
       <button className="btn-primary my-5" onClick={addToCart}>
         Agregar al carrito
