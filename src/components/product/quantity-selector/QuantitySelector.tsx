@@ -1,6 +1,5 @@
 "use client";
 
-import clsx from "clsx";
 import { Minus, Plus } from "lucide-react";
 
 interface Props {
