@@ -29,7 +29,7 @@ export function AddToCart({ product }: Props) {
       size,
       image: product.images[0],
     };
-
+    alert("Producto agregado al carrito");
     addProductToCart(cartProduct);
     setError(false);
     setQuantity(1);
